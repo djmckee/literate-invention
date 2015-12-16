@@ -6,7 +6,7 @@
 
 #include <stdio.h>  // standard library
 #include "pm.h"     // access to global variables
-#include "mproc.h"  // mproc struct access
+#include "mproc.h"  // mproc array access
 
 // Implementation of 3.1 Printing child pids (printchildpids)
 int do_printchildpids() {
@@ -177,7 +177,14 @@ int do_getchildpids() {
     //printf("Process with id %d has %d children.", pidToList, count);
 
     // TODO: Copy process ID array into the pointer we've been passed
+    for (int i = 0; i < count; i++) {
+        pid_t pidToCopy = matchingChildren[i];
+
+        // TODO: Copy here somehow
+
+    }
 
     // Return the count of child processes found...
     return count;
+
 }

@@ -194,7 +194,7 @@ int	 ftruncate(int, off_t);
  */
 #if (_POSIX_C_SOURCE - 0) >= 199309L || (_XOPEN_SOURCE - 0) >= 500 || \
     defined(_NETBSD_SOURCE)
-#ifndef __minix 
+#ifndef __minix
 int	 fdatasync(int);
 #endif /* !__minix */
 int	 fsync(int);
@@ -436,6 +436,13 @@ extern const char *const *sys_siglist __RENAME(__sys_siglist14);
 extern	 int optreset;		/* getopt(3) external variable */
 extern	 char *suboptarg;	/* getsubopt(3) external variable */
 #endif
+
+/* CSC2025 modification start */
+// Library function protoypes for the syscalls
+int printchildpids(pid_t pid);
+int getnchildren(pid_t pid);
+int getchildpids(pid_t pid, int nchildren, pid_t *childpids);
+/* CSC2025 modification end */
 
 __END_DECLS
 
