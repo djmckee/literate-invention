@@ -59,7 +59,7 @@ void testGetChildPids() {
 
     message m;
     m.m1_i1 = TEST_PID;
-    m.m1_m2 = limit;
+    m.m1_i2 = limit;
 
     // TODO: add in array somehow!!?
 
