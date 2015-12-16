@@ -17,6 +17,9 @@ int do_printchildpids() {
     // Process ID must be between 1 and the maximum, perform some bounds checking...
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
+
+        // TODO: Set error number too!
+
         return -1;
     }
 
@@ -66,6 +69,9 @@ int do_getnchildren() {
     // Process ID must be between 1 and the maximum, perform some bounds checking...
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
+
+        // TODO: Set error number too!
+
         return -1;
     }
 
@@ -123,6 +129,9 @@ int do_getchildpids() {
     // Process ID must be between 1 and the maximum, perform some bounds checking...
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
+
+        // TODO: Set error number too!
+
         return -1;
     }
 
