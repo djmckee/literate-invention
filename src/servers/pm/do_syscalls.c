@@ -1,8 +1,8 @@
 /*
-*  Author: Dylan McKee (140357185)
-*  Date: 10/12/15
-*  Purpose: The implementation of various Minix system calls for CSC2025
-*/
+ *  Author: Dylan McKee (140357185)
+ *  Date: 10/12/15
+ *  Purpose: The implementation of various Minix system calls for CSC2025
+ */
 
 #include <stdio.h>  // standard library
 #include "pm.h"     // access to global variables
