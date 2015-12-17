@@ -203,12 +203,22 @@ int do_getchildpids() {
     size_t childArraySize = (sizeof(pid_t) * count);
 
     // And run the copy between processes, as per the assignment instructions
-    sys_vircopy(SELF, &matchingChildren, who_e, &childPids, childArraySize);
-    
+    int copyStatus = sys_vircopy(SELF, &matchingChildren, who_e, &childPids, childArraySize);
+
     if (count == 0) {
         // No child processes found; set error number to 'No child processes'
         errno = ECHILD;
 
+    }
+
+    // Did the copy succeed?
+    if (copyStatus == -1) {
+        // Copy failed!
+        // Set error number appropriately... (going for a 'Bad address' error)
+        errno = EFAULT;
+        
+        // Return fail status
+        return -1;
     }
 
     // Return the count of child processes found...
