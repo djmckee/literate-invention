@@ -135,7 +135,7 @@ int do_getchildpids() {
     int maximumProcessLimit = m_in.m1_i2;
 
     // Get the childpid's array pointer
-    pid_t *childPids = m.m1_p1;
+    pid_t *childPids = m_in.m1_p1;
 
     int processCount = NR_PROCS;
     // Process ID must be between 1 and the maximum, perform some bounds checking...
@@ -216,7 +216,7 @@ int do_getchildpids() {
         // Copy failed!
         // Set error number appropriately... (going for a 'Bad address' error)
         errno = EFAULT;
-        
+
         // Return fail status
         return -1;
     }

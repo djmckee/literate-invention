@@ -45,7 +45,7 @@ void testGetNChildren() {
     int result = _syscall(PM_PROC_NR, GETNCHILDREN, &m);
 
 
-    if (result == 0) {
+    if (result >= 0) {
         printf("GETNCHILDREN system call success\n");
     } else {
         printf("GETNCHILDREN system call failed\n");
@@ -61,12 +61,13 @@ void testGetChildPids() {
     m.m1_i1 = TEST_PID;
     m.m1_i2 = limit;
 
-    // Pass the childpids array pointer...
-    m.m1_p1 = childpids;
+    pid_t childPids[] = { 0 };
+
+    m.m1_p1 = childPids;
 
     int result = _syscall(PM_PROC_NR, GETCHILDPIDS, &m);
 
-    if (result == 0) {
+    if (result >= 0) {
         printf("GETCHILDPIDS system call success\n");
     } else {
         printf("GETCHILDPIDS system call failed\n");
