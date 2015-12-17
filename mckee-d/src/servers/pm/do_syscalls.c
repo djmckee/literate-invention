@@ -15,8 +15,8 @@ int do_printchildpids() {
     int pidToList = m_in.m1_i1;
 
     int processCount = NR_PROCS;
-    // Process ID must be between 1 and the maximum, perform some bounds checking...
-    if (pidToList < 1 || pidToList >= processCount) {
+    // Process ID must be greater than 0, perform some bounds checking...
+    if (pidToList < 1) {
         // pid is not valid! Return with error code -1....
 
         // Set error number to 'No such process'
@@ -68,8 +68,8 @@ int do_getnchildren() {
     int pidToList = m_in.m1_i1;
 
     int processCount = NR_PROCS;
-    // Process ID must be between 1 and the maximum, perform some bounds checking...
-    if (pidToList < 1 || pidToList >= processCount) {
+    // Process ID must be greater than 0, perform some bounds checking...
+    if (pidToList < 1) {
         // pid is not valid! Return with error code -1....
 
         // Set error number to 'No such process'
@@ -138,8 +138,8 @@ int do_getchildpids() {
     pid_t *childPids = m_in.m1_p1;
 
     int processCount = NR_PROCS;
-    // Process ID must be between 1 and the maximum, perform some bounds checking...
-    if (pidToList < 1 || pidToList >= processCount) {
+    // Process ID must be greater than 0, perform some bounds checking...
+    if (pidToList < 1) {
         // pid is not valid! Return with error code -1....
 
         // Set error number to 'No such process'
