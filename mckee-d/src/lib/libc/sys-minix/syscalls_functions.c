@@ -34,7 +34,8 @@ int getchildpids(pid_t pid, int nchildren, pid_t *childpids) {
     m.m1_i1 = pid;
     m.m1_i2 = nchildren;
 
-    // TODO: How to pass on childpids!?
+    // Pass the childpids array pointer...
+    m.m1_p1 = childpids;
 
     return _syscall(PM_PROC_NR, GETCHILDPIDS, &m);  // invoke system call
 

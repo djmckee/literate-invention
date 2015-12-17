@@ -134,6 +134,9 @@ int do_getchildpids() {
     // Get the limit of child processes to find from the message
     int maximumProcessLimit = m_in.m1_i2;
 
+    // Get the childpid's array pointer
+    pid_t *childPids = m.m1_p1;
+
     int processCount = NR_PROCS;
     // Process ID must be between 1 and the maximum, perform some bounds checking...
     if (pidToList < 1 || pidToList >= processCount) {
@@ -195,14 +198,13 @@ int do_getchildpids() {
     // Print count to the console (just for debugging!)...
     //printf("Process with id %d has %d children.", pidToList, count);
 
-    // TODO: Copy process ID array into the pointer we've been passed
-    for (int i = 0; i < count; i++) {
-        pid_t pidToCopy = matchingChildren[i];
+    // Copy process ID array into the pointer we've been passed
+    // Compute size of array to copy first...
+    size_t childArraySize = (sizeof(pid_t) * count);
 
-        // TODO: Copy here somehow
-
-    }
-
+    // And run the copy between processes, as per the assignment instructions
+    sys_vircopy(SELF, &matchingChildren, who_e, &childPids, childArraySize);
+    
     if (count == 0) {
         // No child processes found; set error number to 'No child processes'
         errno = ECHILD;
