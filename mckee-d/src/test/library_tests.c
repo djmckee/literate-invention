@@ -30,7 +30,8 @@ void testPrintChildPids() {
         printf("testPrintChildPids success\n");
     } else {
         printf("testPrintChildPids failed\n");
-        // TODO: Print error number/description
+        // Print error number/description
+         perror("testPrintChildPids error");
     }
 
 }
@@ -42,7 +43,9 @@ void testGetNChildren() {
         printf("testGetNChildren success\n");
     } else {
         printf("testGetNChildren failed\n");
-        // TODO: Print error number/description
+        // Print error number/description
+        perror("testGetNChildren error");
+
     }
 
 }
@@ -52,7 +55,7 @@ void testGetChildPids() {
     const int limit = 50;
 
     // Create an array of PIDs to fill
-    pid_t *pidArray[limit] = malloc(sizeof(pid_t) * limit);
+    pid_t pidArray[limit] = { 0 };
 
     // Test...
     int numberOfChildren = getchildpids(TEST_PID, limit, pidArray);
@@ -61,7 +64,9 @@ void testGetChildPids() {
         printf("testGetChildPids success\n");
     } else {
         printf("testGetChildPids failed\n");
-        // TODO: Print error number/description
+        // Print error number/description
+        perror("testGetChildPids error");
+
     }
 
 }

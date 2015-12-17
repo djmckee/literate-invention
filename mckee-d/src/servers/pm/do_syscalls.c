@@ -7,6 +7,7 @@
 #include <stdio.h>  // standard library
 #include "pm.h"     // access to global variables
 #include "mproc.h"  // mproc array access
+#include "errno.h"  // error number acccess
 
 // Implementation of 3.1 Printing child pids (printchildpids)
 int do_printchildpids() {
@@ -18,7 +19,8 @@ int do_printchildpids() {
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
 
-        // TODO: Set error number too!
+        // Set error number to 'No such process'
+        errno = ESRCH;
 
         return -1;
     }
@@ -70,7 +72,8 @@ int do_getnchildren() {
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
 
-        // TODO: Set error number too!
+        // Set error number to 'No such process'
+        errno = ESRCH;
 
         return -1;
     }
@@ -112,6 +115,12 @@ int do_getnchildren() {
     // Print count to the console (just for debugging!)...
     //printf("Process with id %d has %d children.", pidToList, count);
 
+    if (count == 0) {
+        // No child processes found; set error number to 'No child processes'
+        errno = ECHILD;
+
+    }
+
     // Return the count...
     return count;
 
@@ -130,7 +139,8 @@ int do_getchildpids() {
     if (pidToList < 1 || pidToList >= processCount) {
         // pid is not valid! Return with error code -1....
 
-        // TODO: Set error number too!
+        // Set error number to 'No such process'
+        errno = ESRCH;
 
         return -1;
     }
@@ -190,6 +200,12 @@ int do_getchildpids() {
         pid_t pidToCopy = matchingChildren[i];
 
         // TODO: Copy here somehow
+
+    }
+
+    if (count == 0) {
+        // No child processes found; set error number to 'No child processes'
+        errno = ECHILD;
 
     }
 
