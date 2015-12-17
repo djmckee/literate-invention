@@ -61,7 +61,8 @@ void testGetChildPids() {
     m.m1_i1 = TEST_PID;
     m.m1_i2 = limit;
 
-    // TODO: add in array somehow!!?
+    // Pass the childpids array pointer...
+    m.m1_p1 = childpids;
 
     int result = _syscall(PM_PROC_NR, GETCHILDPIDS, &m);
 
