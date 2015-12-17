@@ -1,3 +1,5 @@
+exclude
+
 # Object files
 *.o
 *.ko
